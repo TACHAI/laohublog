@@ -52,7 +52,7 @@
         <div class="ui inverted vertical  segment masthead">
 
             <h1 class="ui center aligned header blogslogon" style="font-size:50px;font-family: 'Raleway', sans-serif!important;">
-                老胡的博客
+                113的博客
                 <p class="ui sub header">
                     everyone has a story to tell
                     每个人都有故事要说
@@ -92,9 +92,9 @@
                             {{ aritcle.headline }}
                         </h1>
                     </a>
-
-                    <i class="icon grey small unhide"> {{ aritcle.browse_num }}</i>
-                    <br>{{aritcle.created_time}}</br>
+                    <br class="ui center">创建日期{{aritcle.created_time}}      阅读量{{ aritcle.browse_num }}</br>
+                    <!--<i class="icon grey small unhide"> {{ aritcle.browse_num }}</i>-->
+                    <!--<br>{{aritcle.created_time}}</br>-->
                     <!--<i class="icon grey small calender">{{aritcle.created_time}}</i>-->
                     <p>
                         <!--下面采用了过滤器超过100个字就不会显示    -->
@@ -110,6 +110,20 @@
                     </div>
                 </div>
             {% endfor %}
+        </div>
+        <div class="pagination">
+            {% if aritcle_list.has_previous %}
+            <!-- 如果当前页还有上一页，显示一个上一页的按钮 -->
+            <a href="?page={{ post_list.previous_page_number }}">上一页</a>
+            {% endif %}
+            <span class="current">
+               <!-- 显示当前页面信息 -->
+               第 {{ aritcle_lsit.number }} 页 / 共 {{ aritcle_list.paginator.num_pages }} 页
+            </span>
+            {% if aritcle_list.has_next %}
+            <!-- 如果当前页还有上下页，显示一个下一页的按钮 -->
+            <a href="?page={{ post_list.next_page_number }}">下一页</a>
+            {% endif %}
         </div>
 
         <div class="ui inverted  vertical very padded  segment">
